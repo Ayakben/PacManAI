@@ -146,6 +146,4 @@ cython_debug/
 .idea/codeStyles/
 .idea/misc.xml
 .idea/modules.xml
-AI.py
-Pac-Man.nes
-config
+.idea/vcs.xml
