@@ -1,4 +1,4 @@
-
+#--- parameters for the XOR-2 experiment ---#
 
 [NEAT]
 fitness_criterion     = max
@@ -47,7 +47,7 @@ node_delete_prob        = 0.2
 
 # network parameters
 num_hidden              = 0
-num_inputs              = 11
+num_inputs              = 3360
 num_outputs             = 8
 
 # node response options
