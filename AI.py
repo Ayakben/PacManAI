@@ -2,8 +2,15 @@ import retro
 import neat
 
 env = retro.make('PacManNamco-Nes', 'Level1')
+generation = 0
 def evaluate(genomes, config):
+    global generation
+    generation = generation + 1
+    print("Generation: ", generation)
+    specimin = 0
     for genomeID, genome in genomes:
+        specimin = specimin + 1
+        print("Specimin: ", specimin)
         observation = env.reset()
         action = env.action_space.sample()
         network = neat.nn.recurrent.RecurrentNetwork.create(genome, config)
@@ -19,7 +26,7 @@ def evaluate(genomes, config):
             if int(info["lives"]) == 0:
                 done = True
         genome.fitness = currentFitness
-        print(currentFitness)
+        print("Fitness: ", currentFitness)
 config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet, neat.DefaultStagnation, 'config')
 population = neat.Population(config)
-winner = population.run(evaluate, 5)
+winner = population.run(evaluate, 20)
