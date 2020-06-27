@@ -2,7 +2,6 @@ import retro
 import neat
 
 env = retro.make('PacManNamco-Nes', 'Level1')
-dataArray = []
 def evaluate(genomes, config):
     for genomeID, genome in genomes:
         observation = env.reset()
@@ -20,6 +19,7 @@ def evaluate(genomes, config):
             if int(info["lives"]) == 0:
                 done = True
         genome.fitness = currentFitness
+        print(currentFitness)
 config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet, neat.DefaultStagnation, 'config')
 population = neat.Population(config)
 winner = population.run(evaluate, 5)
