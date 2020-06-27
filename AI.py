@@ -19,7 +19,7 @@ def evaluate(genomes, config):
         observation, reward, done, info = env.step(action)
         while not done:
             env.render()
-            dataArray = [info["pacmanX"], info["pacmanY"], info["pinkyX"], info["pinkyY"], info["clydeX"], info["clydeY"], info["blinkyX"], info["blinkyY"], info["inkyX"], info["inkyY"], info["fruit"]]
+            dataArray = [info["pacmanX"], info["pacmanY"], info["pinkyX"], info["pinkyY"], info["clydeX"], info["clydeY"], info["blinkyX"], info["blinkyY"], info["inkyX"], info["inkyY"], info["pellets"]]
             networkOutput = network.activate(dataArray)
             observation, reward, done, info = env.step(networkOutput)
             currentFitness = info["score"]
@@ -29,4 +29,4 @@ def evaluate(genomes, config):
         print("Fitness: ", currentFitness)
 config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet, neat.DefaultStagnation, 'config')
 population = neat.Population(config)
-winner = population.run(evaluate, 50)
+winner = population.run(evaluate)
