@@ -29,4 +29,4 @@ def evaluate(genomes, config):
         print("Fitness: ", currentFitness)
 config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet, neat.DefaultStagnation, 'config')
 population = neat.Population(config)
-winner = population.run(evaluate, 20)
+winner = population.run(evaluate, 50)
